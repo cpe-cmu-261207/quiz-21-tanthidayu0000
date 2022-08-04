@@ -1,29 +1,31 @@
-const btnRandom = document.getElementById("btn-random");
-const imgProfile = document.getElementById("img-profile");
-const Gender = document.getElementById("span-gender-icon");
-const UserCard = document.getElementById("div-user-card");
+const Random = document.querySelector("#btn-random")
+const ImgProfile = document.querySelector("#img-profile")
+const UserCard = document.querySelector("#div-user-card")
+const LoadingCard = document.querySelector("#div-loading-card")
+const Name = document.querySelector("#p-name")
+const Email = document.querySelector("#p-email")
+const Address = document.querySelector("#p-address")
+const GenderI = document.querySelector("#span-gender-icon")
 
-async function callApi() {
-  btnRandom.innerText = "Loading.....";
-  btnRandom.disabled = true;
+callApi();
+
+async function callApi() 
+{
+  UserCard.style.display = "none";
+  LoadingCard.style.display = "";
   const resp = await axios.get("https://randomuser.me/api/");
-  imgProfile.src = resp.data.message;
+  UserCard.style.display = "";
+  LoadingCard.style.display = "none";
+  const data = resp.data.results[0]
+  ImgProfile.src = data.picture.large;
+  Name.innerText = ${data.name.first} ${data.name.last} ;
+  Address.innerText =  `${data.location.city} ${data.location.state}${data.location.country} ${data.location.postcode}`;
+  Email.innerText = data.email;
 
-  imgProfile.onload = () => {
-    btnRandom.innerText = "Generate more..";
-    btnRandom.disabled = false;
-  };
-
-  function selectgender() {
-    if (Gender === male) {
-      return "👨";
-    } else {
-      return "👩";
-    }
-  }
+  if(resp.data.results[0].gender === "male") {GenderI.innerText = "👨";}
+  else{GenderI.innerText = "👩";}
 }
-
-btnRandom.onclick = () => {
-  btnRandom.innerText = "Loading Profile..";
-  btnRandom.disabled = true;
+Random.onclick =  async ()=>
+{
+  await callApi();
 };
