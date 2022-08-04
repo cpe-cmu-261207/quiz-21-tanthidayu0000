@@ -4,4 +4,4 @@
 
 https://o365cmu-my.sharepoint.com/:b:/g/personal/chayanin_s_cmu_ac_th1/EWFnQzLFA-hEvJt5ZRGUYboB3lVE-MNNXsqf7mjoC7H1Jg?e=wjbghg
 
-## GitHub Pages URL : https://cpe-cmu-261207.github.io/quiz-21-tanthidayu0000/
+## GitHub Pages URL : https://cpe-cmu-261207.github.io/quiz-21-tanthidayu0000/ push ไม่ได้เลย copy code มาแปะใน github ค่ะ
